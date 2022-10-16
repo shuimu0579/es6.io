@@ -8,13 +8,23 @@
 <script>
   let dog1 = { name: 'Snickers', age: 3 };
   let dog2 = { name: 'sunny', age: 1 };
-
+  let dog3 = { name: 'Snickers01', age: 5 };
+  let dog4 = { name: 'sunny01', age: 6 };
   const weakSauce = new WeakSet([dog1, dog2]);
+  const Sauce = new Set([dog3, dog4]);
 
-  console.log(weakSauce);
+  console.log('weakSauce', weakSauce);
   dog1 = null;
-  console.log(weakSauce);
-
+  setTimeout(() => {
+    console.log('weakSauce', weakSauce);
+  }, 1000)
+  
+  console.log('Sauce', Sauce);
+  dog3 = null;
+  setTimeout(() => {
+    console.log('Sauce', Sauce);
+  }, 1000)
+  
 </script>
 </body>
 </html>

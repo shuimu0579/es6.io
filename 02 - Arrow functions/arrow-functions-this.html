@@ -61,6 +61,20 @@
   </div>
 
   <script>
+    const box = document.querySelector('.box')
+    box.addEventListener('click', function(){
+      console.log(this) // this => box element
+      setTimeout(function(){
+        console.log(this) // this => Window
+      }, 1000);
+      setTimeout(() => {
+        console.log(this) // this => box element
+      }, 1000);
+    })
+    box.addEventListener('click', () => {
+      console.log(this) // this => Window
+    })
+    
   </script>
 
 </body>

@@ -16,12 +16,10 @@
       });
     }
 
-    function catchErrors(fn) {
+    function catchErrors( fn, ErrorHandleFn = (err => console.error(err)) ) {
       return function (...args) {
-        return fn(...args).catch((err) => {
-          console.error('Ohhhh nooo!!!!!');
-          console.error(err);
-        });
+        console.log(...args); //这里的 ...args 就是 wrappedFunction 的参数
+        return fn(...args).catch(ErrorHandleFn);
       }
     }
 
@@ -37,10 +35,11 @@
       console.log(res4);
       console.log('end');
     }
-
-    const wrappedFunction = catchErrors(go);
-
+    const wrappedFunction = catchErrors(go, err => console.error(err));
     wrappedFunction('Wes', 'Bos');
+
+    const test = go('Wes', 'Bos');
+    console.log(test, '捕获异常原理：调用async函数，其返回值是一个Promise，这就为.catch捕获异常提供了条件');
   </script>
 </body>
 

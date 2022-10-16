@@ -18,14 +18,13 @@
     // }
 
     // go();
-
     async function getData(names) {
       const promises = names.map(name => fetch(`https://api.github.com/users/${name}`).then(r => r.json()));
-      const people = await Promise.all(promises);
-      console.log(people);
+      const [ shuimu0579, wesbos ] = await Promise.all(promises);
+      console.log('shuimu0579', shuimu0579);
+      console.log('wesbos', wesbos);
     }
-
-    getData(['wesbos', 'stolinski', 'darcyclarke']);
+    getData(['shuimu0579', 'wesbos']);
   </script>
 </body>
 

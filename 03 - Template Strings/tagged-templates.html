@@ -12,6 +12,17 @@
 <body>
 <script>
   function highlight(strings, ...values) {
+    console.log(strings) 
+    // [
+    //     "My dog's name is ",
+    //     " and he is ",
+    //     " years old"
+    // ]
+    console.log(values)
+    // [
+    //     "Snickers",
+    //     100
+    // ]
     let str = '';
     strings.forEach((string, i) => {
       str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
